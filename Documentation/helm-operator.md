@@ -53,6 +53,16 @@ $ helm install rook-alpha/rook
 
 The command deploys rook on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
+Also note that as of Helm version 2.6.0 it is having some issues with semantic versioning (specifically recognizing a suffix). This problem currently affects the master channel and the full version needs to be specified on the `helm install` command. Using `helm search rook` will allow you to determine the current version to use, for example: 
+
+```console
+$ helm search rook
+NAME                    VERSION                 DESCRIPTION
+rook-alpha/rook         v0.5.1                  File, Block, and Object Storage Services for yo...
+rook-master/rook        v0.5.0-146.g3f91cb8     File, Block, and Object Storage Services for yo...
+$ helm install rook-master/master --version=v0.5.0-146.g3f91cb8
+```
+
 Alternatively, to deploy from a local checkout of the rook codebase:
 
 ```console
